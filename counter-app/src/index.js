@@ -4,4 +4,4 @@ import Counter from "./Counter";
 
 import "./index.css";
 
-ReactDOM.render(<Counter value={1} />, document.getElementById("root"));
+ReactDOM.render(<Counter />, document.getElementById("root"));
