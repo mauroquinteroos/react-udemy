@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Intro</title>
+    <!-- Uploading React -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+      picture {
+        width: 6.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      img {
+        box-shadow: 0 0 0.94rem #999;
+        border-radius: 50%;
+        width: 100%;
+      }
+      .disabled {
+        opacity: 0.5;
+      }
+      picture.small {
+        width: 3.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- type="text/babel" nos permite transpilar todo el código a través de babel -->
+    <script type="text/babel">
+      const root = document.querySelector("#root");
+      const create = React.createElement;
+
+      // State
+      const useState = React.useState;
+
+      // JSX initial template
+      const name = "Mauro";
+      const h1 = <h1>Hello World {name}!</h1>;
+      ReactDOM.render(h1, root);
+
+      // Component without JSX
+      const Avatar = ({ id }) => {
+        const src = `https://randomuser.me/api/portraits/women/${id}.jpg`;
+        return create("img", { src });
+      };
+
+      const AvatarJSX = ({ id, name = "🥳", size }) => {
+        // const enabled = state[0]
+        // const setEnabled = state[1]
+        const [enabled, setEnabled] = useState(true); // length of this array is 2
+
+        // Renderizado condicional
+        // if(!id) return ("Avatar Incorrecto");
+
+        const src = `https://randomuser.me/api/portraits/women/${id}.jpg`;
+        const className = enabled ? "" : "disabled";
+        const pictureClassName = size === "small" ? "small" : "";
+        return (
+          <picture className={pictureClassName}>
+            {id ? (
+              <img
+                onClick={() => setEnabled(!enabled)}
+                className={className}
+                src={src}
+              ></img>
+            ) : (
+              <strong>Not image</strong>
+            )}
+            <h3>{enabled ? name : "User Disabled"}</h3>
+          </picture>
+        );
+      };
+
+      ReactDOM.render(
+        create("div", null, [
+          create(Avatar, { id: 1 }),
+          create(Avatar, { id: 2 }),
+        ]),
+        root
+      );
+
+      ReactDOM.render(
+        <div>
+          <AvatarJSX id={1} size="small"></AvatarJSX>
+          <AvatarJSX id={2} name="Fernanda"></AvatarJSX>
+          <AvatarJSX name="Clarissa"></AvatarJSX>
+        </div>,
+        root
+      );
+    </script>
+  </body>
+</html>

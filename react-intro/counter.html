@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Intro</title>
+    <!-- Uploading React -->
+    <script
+      crossorigin
+      src="https://unpkg.com/react@16/umd/react.production.min.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <style>
+      picture {
+        width: 6.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      img {
+        box-shadow: 0 0 0.94rem #999;
+        border-radius: 50%;
+        width: 100%;
+      }
+      .disabled {
+        opacity: 0.5;
+      }
+      picture.small {
+        width: 3.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!-- type="text/babel" nos permite transpilar todo el código a través de babel -->
+    <script type="text/babel">
+      const root = document.querySelector("#root");
+      const create = React.createElement;
+      const useState = React.useState;
+
+      const Counter = () => {
+        const counterState = useState(10);
+        const counterNum = counterState[0];
+        const counterUpdate = counterState[1];
+
+        const [times, timesUpdate] = useState(0);
+
+        return (
+          <div>
+            <p>{counterNum}</p>
+            <button
+              onClick={() => {
+                counterUpdate(counterNum + 1);
+                timesUpdate(times + 1);
+              }}
+            >
+              Incrementar
+            </button>
+            <button
+              onClick={() => {
+                counterUpdate(counterNum - 1);
+                timesUpdate(times + 1);
+              }}
+            >
+              Decrementar{" "}
+            </button>
+            <h2>{times}</h2>
+          </div>
+        );
+      };
+
+      ReactDOM.render(
+        <div>
+          <Counter></Counter>
+        </div>,
+        root
+      );
+    </script>
+  </body>
+</html>
