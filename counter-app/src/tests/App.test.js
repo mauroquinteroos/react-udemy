@@ -1,11 +1,21 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { shallow } from "enzyme";
 import App from "../App";
 
 describe("Testing in <App/>", () => {
-  test("It has to show Hello Mauro", () => {
+  test("Should show <App/>", () => {
     const greeting = "Hello World";
-    const { getByText } = render(<App greeting={greeting} />);
-    expect(getByText(greeting)).toBeInTheDocument();
+    const wrapper = shallow(<App greeting={greeting} />);
+
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  test("Should show the subtitle sended by props", () => {
+    const greeting = "Hello World";
+    const subTitle = "App component";
+
+    const wrapper = shallow(<App greeting={greeting} subTitle={subTitle} />);
+    const subTitleText = wrapper.find("p").text();
+    expect(subTitleText).toBe(subTitle);
   });
 });
