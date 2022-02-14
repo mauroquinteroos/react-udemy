@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 
-const Counter = ({ value }) => {
-  const [counter, setCounter] = useState(0);
+const Counter = ({ value = 10 }) => {
+  const [counter, setCounter] = useState(value);
 
   const handleAdd = () => setCounter((counter) => counter + 1);
 
