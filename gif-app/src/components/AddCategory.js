@@ -14,7 +14,7 @@ const AddCategory = ({ setCategories }) => {
       setinputValue("");
     }
   };
-  console.log(inputValue);
+
   return (
     <form onSubmit={handleSubmit}>
       <input type="text" value={inputValue} onChange={handleInputChange} />
