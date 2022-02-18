@@ -1,11 +1,90 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
 body {
+  width: 100%;
   margin: 0;
-  padding: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Ubuntu", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 1rem 1.6rem 3rem;
+  font-family: "Rubik", sans-serif;
+  font-size: 16px;
+  background-color: #fff;
+}
+form,
+ul,
+li {
+  display: block;
+  width: 100%;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style-type: none;
 }
 input {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   width: 100%;
+}
+figure {
+  margin: 0;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.category-title {
+  margin: 0 0 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #252b46;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.4rem;
+  width: 100%;
+  margin: 2rem 0 0;
+  padding: 0;
+}
+.card {
+  display: block;
+  width: 100%;
+  padding: 1.5em;
+  box-shadow: 0 10px 12px -5px rgba(83, 104, 223, 0.2);
+  border-radius: 1em;
+}
+
+.gif-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+.gif-card {
+  padding: 1rem 1.2rem;
+  box-shadow: 0 0 1.2rem rgb(0 0 0 / 15%);
+  border-radius: 1em;
+}
+.gif-wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+.gif {
+  width: 100%;
+  border-radius: 1rem;
+}
+.gif-title {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #252b46;
+  text-align: center;
 }

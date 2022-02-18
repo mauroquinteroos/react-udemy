@@ -11,9 +11,9 @@ const GifExpertApp = () => {
 
   return (
     <>
-      <h2>GifExpertApp</h2>
+      <h1>GifExpertApp</h1>
       <AddCategory setCategories={setCategories} />
-      <ul>
+      <ul className="card-grid">
         {categories.map((category) => (
           <GifGrid key={category} category={category} />
         ))}
