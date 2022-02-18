@@ -5,7 +5,6 @@ import GifGrid from "./components/GifGrid";
 const GifExpertApp = () => {
   const [categories, setCategories] = useState([
     "One Punch Man",
-    "Samurai X",
     "Dragon Ball",
   ]);
 
@@ -15,7 +14,7 @@ const GifExpertApp = () => {
       <AddCategory setCategories={setCategories} />
       <ul className="card-grid">
         {categories.map((category) => (
-          <GifGrid key={category} category={category} />
+          <GifGrid key={category} category={category} limit={10} />
         ))}
       </ul>
     </>

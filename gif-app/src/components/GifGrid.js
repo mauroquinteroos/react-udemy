@@ -1,27 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { getGifs } from "../helpers/getGifs";
 import GifGridItem from "./GifGridItem";
 
-const GifGrid = ({ category }) => {
+const GifGrid = ({ category, limit }) => {
   const [images, setImages] = useState([]);
 
-  const URL =
-    "https://api.giphy.com/v1/gifs/search?q=Kimetsu No Yaiba&limit=10&api_key=0CX8QOffwaN0HW4Dl5aHW4tE6qh6gqTH";
-  const getGifs = async () => {
-    let response = await fetch(URL);
-    let { data } = await response.json();
-
-    const gifs = data.map((gif) => ({
-      id: gif.id,
-      title: gif.title,
-      url: gif.images?.downsized_medium.url,
-    }));
-    console.log(gifs);
-    setImages(gifs);
-  };
-
   useEffect(() => {
-    getGifs();
-  }, []);
+    getGifs(category, limit).then((images) => setImages(images));
+  }, [category, limit]);
 
   return (
     <li className="card">
